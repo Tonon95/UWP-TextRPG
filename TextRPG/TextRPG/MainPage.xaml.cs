@@ -26,5 +26,20 @@ namespace TextRPG
         {
             this.InitializeComponent();
         }
+
+        private void MainPageButton_GoToPage1_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(GamePage1));
+        }
+
+        private void MainPageButton_GoToPage2_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(GamePage1));
+        }
+
+        private void MainPageButton_GoToPage3_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(GamePage1));
+        }
     }
 }

@@ -9,6 +9,18 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Name="StartScreenTextBlock" Margin="0, 30, 0, 0" HorizontalAlignment="Center" FontSize="47" Text="Main Page"/>
 
+        <StackPanel Grid.Row="1" VerticalAlignment="Center">
+            <Button Content="Game Page 1" FontSize="26" Margin="0,20, 0, 20" Click="MainPageButton_GoToPage1_Click" HorizontalAlignment="Center"/>
+            <Button Content="Game Page 2" FontSize="26" Margin="0,20, 0, 20" Click="MainPageButton_GoToPage2_Click" HorizontalAlignment="Center"/>
+            <Button Content="Game Page 3" FontSize="26" Margin="0,20, 0, 20" Click="MainPageButton_GoToPage3_Click" HorizontalAlignment="Center"/>
+        </StackPanel>
+        
     </Grid>
 </Page>
