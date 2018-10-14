@@ -10,17 +10,20 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2.5*"/>
             <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        
-        <TextBlock Name="StartScreenTextBlock" Margin="0, 30, 0, 0" HorizontalAlignment="Center" FontSize="47" Text="Main Page"/>
 
-        <StackPanel Grid.Row="1" VerticalAlignment="Center">
-            <Button Content="Game Page 1" FontSize="26" Margin="0,20, 0, 20" Click="MainPageButton_GoToPage1_Click" HorizontalAlignment="Center"/>
-            <Button Content="Game Page 2" FontSize="26" Margin="0,20, 0, 20" Click="MainPageButton_GoToPage2_Click" HorizontalAlignment="Center"/>
-            <Button Content="Game Page 3" FontSize="26" Margin="0,20, 0, 20" Click="MainPageButton_GoToPage3_Click" HorizontalAlignment="Center"/>
-        </StackPanel>
-        
+        <TextBlock Name="GameNameTextBlock" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" 
+                   Text="Runaway" FontSize="72"/>
+
+
+        <Button Name="StartGameButton" Grid.Row="1" 
+                HorizontalAlignment="Center" VerticalAlignment="Center" 
+                Content="Start Game" FontSize="32"
+                Click="StartGameButton_Click"/>
+
     </Grid>
 </Page>
