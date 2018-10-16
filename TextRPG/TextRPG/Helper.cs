@@ -10,8 +10,8 @@ namespace TextRPG
     {
         public enum GameState
         {
-            CELL_00, CELL_01, CELL_02, CELL_03, CELL_04, CELL_05,
-            CORRIDOR_00, CORRIDOR_01, CORRIDOR_02
+            CELL_00, CELL_01, CELL_02, CELL_03, CELL_04, CELL_05, CELL_06, CELL_07,
+            CORRIDOR_00
         }
 
 
@@ -94,11 +94,84 @@ namespace TextRPG
 
 
             // State 3: CELL_03
+            _stateDescription_Text = "Well, now you are holding a plate of food.\n" +
+                                     "Great, now you can fit in at the prison dinner... Nah, just kidding, that was two months ago.\n" +
+                                     "What do you wanna do now that you have this?";
+            _actionButtonOne_Text = "Turn Left";
+            _actionButtonTwo_Text = "Stay Here";
+            _ifActionButtonOne_NextState = (int)GameState.CELL_04;
+            _ifActionButtonTwo_NextState = (int)GameState.CELL_03;
+            _currentGameState = GameState.CELL_03;
+
+            AddNewGameStateElem(_stateDescription_Text, _actionButtonOne_Text, _actionButtonTwo_Text,
+                                _ifActionButtonOne_NextState, _ifActionButtonTwo_NextState, _currentGameState);
 
             // State 4: CELL_04
+            _stateDescription_Text = "The piranha is still in the aquarium, right above the keys.\n" +
+                                     "Any ideas?";
+            _actionButtonOne_Text = "Use Food";
+            _actionButtonTwo_Text = "Eat Food";
+            _ifActionButtonOne_NextState = (int)GameState.CELL_05;
+            _ifActionButtonTwo_NextState = (int)GameState.CELL_06;
+            _currentGameState = GameState.CELL_04;
+
+            AddNewGameStateElem(_stateDescription_Text, _actionButtonOne_Text, _actionButtonTwo_Text,
+                                _ifActionButtonOne_NextState, _ifActionButtonTwo_NextState, _currentGameState);
+
 
             // State 5: CELL_05
+            _stateDescription_Text = "You shared your plate of food with the piranha. It's happy and now you are BFFs.\n" +
+                                     "The piranha gives you the key to your cell.";
+            _actionButtonOne_Text = "Chat";
+            _actionButtonTwo_Text = "Go Back";
+            _ifActionButtonOne_NextState = (int)GameState.CELL_05;
+            _ifActionButtonTwo_NextState = (int)GameState.CELL_07;
+            _currentGameState = GameState.CELL_05;
 
+            AddNewGameStateElem(_stateDescription_Text, _actionButtonOne_Text, _actionButtonTwo_Text,
+                                _ifActionButtonOne_NextState, _ifActionButtonTwo_NextState, _currentGameState);
+
+
+            // State 6: CELL_06
+            _stateDescription_Text = "You eat food in front of the piranha. The piranha seems pretty annoyed.";
+            _actionButtonOne_Text = "Use Food";
+            _actionButtonTwo_Text = "Eat Food";
+            _ifActionButtonOne_NextState = (int)GameState.CELL_05;
+            _ifActionButtonTwo_NextState = (int)GameState.CELL_06;
+            _currentGameState = GameState.CELL_06;
+
+            AddNewGameStateElem(_stateDescription_Text, _actionButtonOne_Text, _actionButtonTwo_Text,
+                                _ifActionButtonOne_NextState, _ifActionButtonTwo_NextState, _currentGameState);
+
+
+            // State 7: CELL_07
+            _stateDescription_Text = "You are now in the center of the cell with the key to your freedom... Kind of.\n" +
+                                     "Now what?";
+            _actionButtonOne_Text = "Use Key";
+            _actionButtonTwo_Text = "Stay Here";
+            _ifActionButtonOne_NextState = (int)GameState.CORRIDOR_00;
+            _ifActionButtonTwo_NextState = (int)GameState.CELL_07;
+            _currentGameState = GameState.CELL_07;
+
+
+            AddNewGameStateElem(_stateDescription_Text, _actionButtonOne_Text, _actionButtonTwo_Text,
+                                _ifActionButtonOne_NextState, _ifActionButtonTwo_NextState, _currentGameState);
+
+
+
+            // State 8: CORRIDOR_00 (FINAL STATE OF THE PROTOTYPE)
+            _stateDescription_Text = "You are now outside your cell. You are going to miss Frank, the piranha.\n" +
+                                     "You know you are going to see each other again when you figure out what's happening. But... " +
+                                     "Where are we?";
+            _actionButtonOne_Text = "Restart";
+            _actionButtonTwo_Text = "Do Nothing";
+            _ifActionButtonOne_NextState = (int)GameState.CELL_00;
+            _ifActionButtonTwo_NextState = (int)GameState.CORRIDOR_00;
+            _currentGameState = GameState.CORRIDOR_00;
+
+
+            AddNewGameStateElem(_stateDescription_Text, _actionButtonOne_Text, _actionButtonTwo_Text,
+                                _ifActionButtonOne_NextState, _ifActionButtonTwo_NextState, _currentGameState);
 
 
 

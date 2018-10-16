@@ -13,12 +13,11 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// O modelo de item de Página em Branco está documentado em https://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace TextRPG
 {
     /// <summary>
-    /// Uma página vazia que pode ser usada isoladamente ou navegada dentro de um Quadro.
+    /// Page that shows the content of the game, such as location of the player in world,
+    /// description of his/her current state and arounds and two action buttons.
     /// </summary>
     public sealed partial class GamePage : Page
     {
@@ -31,30 +30,41 @@ namespace TextRPG
         private void OnGamePage_Loaded(object sender, RoutedEventArgs e)
         {
             Helper.InitializeStringConstants();
-            
-            StateDescriptionTextBlock.Text = Helper.GameStateList.ElementAt(0).StateDescription_Text;
-            ActionButton1.Content = Helper.GameStateList.ElementAt(0).ActionButtonOne_Text;
-            ActionButton2.Content = Helper.GameStateList.ElementAt(0).ActionButtonTwo_Text;
+            ChangeTextElementsInGame();
         }
 
 
         private void ActionButton1_Click(object sender, RoutedEventArgs e)
         {
             Helper.SetCurrentGameState(1);
-            
-            StateDescriptionTextBlock.Text = Helper.GameStateList.ElementAt(Helper.CurrentStateIndex).StateDescription_Text;
-            ActionButton1.Content = Helper.GameStateList.ElementAt(Helper.CurrentStateIndex).ActionButtonOne_Text;
-            ActionButton2.Content = Helper.GameStateList.ElementAt(Helper.CurrentStateIndex).ActionButtonTwo_Text;
+            ChangeTextElementsInGame();
         }
 
 
         private void ActionButton2_Click(object sender, RoutedEventArgs e)
         {
             Helper.SetCurrentGameState(2);
+            ChangeTextElementsInGame();
+        }
 
-            StateDescriptionTextBlock.Text = Helper.GameStateList.ElementAt(Helper.CurrentStateIndex).StateDescription_Text;
-            ActionButton1.Content = Helper.GameStateList.ElementAt(Helper.CurrentStateIndex).ActionButtonOne_Text;
-            ActionButton2.Content = Helper.GameStateList.ElementAt(Helper.CurrentStateIndex).ActionButtonTwo_Text;
+
+        private void ChangeTextElementsInGame()
+        {
+            // Getting Current GameStateElem to use
+            Helper.GameStateElem currentElem = Helper.GameStateList.ElementAt(Helper.CurrentStateIndex);
+
+            // Changing the location text using the GameState name
+            string currentStateName = currentElem.CurrentGameState.ToString();
+            string[] currentStateNameSplitted = currentStateName.Split('_');
+            string location = currentStateNameSplitted[0].First().ToString().ToUpper() + currentStateNameSplitted[0].Substring(1).ToLower();
+
+            CurrentLocationTextBlock.Text = location;
+
+
+            // Changing texts using the GameStateElem struct fields
+            StateDescriptionTextBlock.Text = currentElem.StateDescription_Text;
+            ActionButton1.Content = currentElem.ActionButtonOne_Text;
+            ActionButton2.Content = currentElem.ActionButtonTwo_Text;
         }
     }
 
